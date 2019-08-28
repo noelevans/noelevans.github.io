@@ -1,0 +1,27 @@
+---
+layout: post
+title: Mapping caps lock to escape in Windows 7
+date: 2019-06-14 20:53:23.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _wpas_done_all: '1'
+  _edit_last: '1'
+author: Noel
+permalink: "/mapping-caps-lock-to-escape-in-windows-7/"
+---
+<p><!-- wp:paragraph --></p>
+<p>While working in a large organisation where all external software was forbidden, I wanted to map my caps lock to escape to improve my Vim experience. The route which finally worked was to use the reg instruction:</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Windows Registry Editor Version 5.00</p>
+<p>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]<br />"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,3a,00,46,00,01,00,3a,00,00,00,00,00    </p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>I found this on <a href="https://vim.fandom.com/wiki/Map_caps_lock_to_escape_in_Windows">vim.fandom.com</a>. I first tried the "current user" method. This didn't work so I changed to using the "all users" option which was successful.</p>
+<p><!-- /wp:paragraph --></p>

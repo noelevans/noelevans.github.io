@@ -1,0 +1,26 @@
+---
+layout: post
+title: 'Bash: foreach loop over piped lines'
+date: 2010-09-03 13:35:09.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/bash-foreach-loop-over-lines-from-a-parameter/"
+---
+<p>Another quick bash example where the ratio of time-spent-searching to ease-of-code was pretty bad...</p>
+<p>You have a  command (in this case ls -1) you want to iterate over each line from the command to test for something. Do as follows:</p>
+<pre>ls -1 /usr/java | 
+while read line; do
+    if [ "${line}" = "jdk1.5" ] then
+        echo "Time to upgrade"
+    fi 
+done</pre>
+<p>The contents of the if statement are unimportant. We pipe the multiple lines from ls in to a while loop (using the vertical bar on line 2). The while lets us declare a variable "line" for each row from ls. "line" can then be tested / manipulated as you like.</p>

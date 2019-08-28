@@ -1,0 +1,24 @@
+---
+layout: post
+title: Slicing 2d lists with numpy
+date: 2012-07-05 23:23:39.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/slicing-2d-lists-with-numpy/"
+---
+<pre>olxol = [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ]
+indiciesOfColumnsToShow = [ 0, 2 ]
+npArray = numpy.array( olxol )[:, indiciesOfColumnsToShow]
+olxol2s = npArray.tolist()
+olxol2s
+&gt;&gt;&gt; [ [ 1, 3 ], [ 4, 6 ], [ 7, 9 ] ]</pre>
+<p>&nbsp;</p>

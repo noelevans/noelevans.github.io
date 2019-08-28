@@ -1,0 +1,29 @@
+---
+layout: post
+title: Firefox 3.5 on Ubuntu Intrepid Ibex (8.10)
+date: 2009-06-13 23:49:19.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- ubuntu
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/firefox-3-5-on-ubuntu-intrepid-ibex-8-10/"
+---
+<p>I had a small amount of hassle trying to find instructions for an easy way to install the new 3.5 version of firefox on an Intrepid version of ubuntu. Here is what worked for me...</p>
+<p>1) System &gt; Administration &gt; Software Sources &gt; Third-Party Software tab</p>
+<p>2) Add this repository to the list:<br />
+<span style="font-family: courier new;">deb http://ppa.launchpad.net/fta/ubuntu intrepid main</span><br />
+I think this should be the same for jaunty jakalope too i.e.<br />
+<span style="font-family: courier new;">deb http://ppa.launchpad.net/fta/ubuntu jaunty main</span></p>
+<p>3) <span style="font-family: courier new;">sudo apt-get update</span></p>
+<p>4) <span style="font-family: courier new;">sudo apt-get install firefox-3.5</span></p>
+<p>Firefox 3.5 is now installed here:<br />
+/usr/lib/firefox-3.5b99</p>
+<p>5) Go to this folder and make a shortcut by dragging "firefox-3.5" to somewhere on the navigation bar.</p>
+<p>If there's any problem with this, please let me know</p>

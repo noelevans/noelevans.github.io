@@ -1,0 +1,27 @@
+---
+layout: post
+title: Big R commands
+date: 2015-06-23 11:02:10.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- R
+tags: []
+meta:
+  _edit_last: '1'
+  _wpas_done_all: '1'
+author: Noel
+permalink: "/big-r-commands/"
+---
+<p>Run and walk away from the terminal with:</p>
+<pre class="">nohup Rscript analyse.R &gt; output-random-forest 2&gt;&amp;1 &amp;</pre>
+<p>Set up more swap memory (7<strong>G</strong>b in this case):</p>
+<pre class="">sudo dd if=/dev/zero of=/swapfile.img bs=1024 count=7M
+sudo mkswap /swapfile.img
+sudo swapon /swapfile.img
+</pre>
+<p class="">In this case the memory is instantly available but not on reboot, unless added to fstab with this line:</p>
+<pre class="">/swapfile.img swap swap sw 0 0</pre>

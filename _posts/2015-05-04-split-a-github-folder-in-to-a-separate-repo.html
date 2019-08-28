@@ -1,0 +1,32 @@
+---
+layout: post
+title: Split a GitHub folder in to a separate repo
+date: 2015-05-04 11:17:39.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- git
+tags: []
+meta:
+  _edit_last: '1'
+  _wpas_done_all: '1'
+author: Noel
+permalink: "/split-a-github-folder-in-to-a-separate-repo/"
+---
+<p>You have a repository on Git called "all" and within that is a folder "folder_to_become_repo". You want to break this folder out to be a separate repository in your github account. Obviously, use your account name, not noelevans. Use these commands to make the change:</p>
+<pre class="">mkdir ~/tmp-repo
+cd ~/tmp-repo
+git clone https://github.com/username/all.git
+cd all
+git filter-branch --prune-empty --subdirectory-filter folder_to_become_repo master
+# create a new repo "new-folder-repo" on github with the default options (link: https://github.com/new)
+git remote set-url origin https://github.com/username/new-folder-repo.git
+git push
+
+# Cleanup... being careful
+rm -rf ~/tmp-repo</pre>
+<p>You'll be prompted for your github account name and password when you do the push. After this you have a new repo in Github containing all of the contents from the directory "folder_to_become_repo". The history has been migrated to the new repo too!</p>
+<p>Now clone the repository in your normal workspace and it's ready to go!</p>

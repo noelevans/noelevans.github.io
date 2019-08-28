@@ -1,0 +1,24 @@
+---
+layout: post
+title: svn update --non-interactive
+date: 2010-06-18 16:04:47.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/svn-update-non-interactive/"
+---
+<p>Subversion documentation can sometimes seem quite scant. If you want to use command line svn to update a series of folders, automatically merging each file that needs to be, use</p>
+<p>svn update --non-interactive</p>
+<p>This will keep away the prompts: "Conflict discovered in "</p>
+<p>Instead some of the updated files might/will get some of the markings as below but your compiler should make that obvious later<br />
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine<br />
+=======<br />
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; .r191289</p>

@@ -1,0 +1,25 @@
+---
+layout: post
+title: Flatten lists
+date: 2012-06-08 23:10:10.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/flatten-lists/"
+---
+<p>Flatten a Python list like so:</p>
+<pre>reduce(lambda x,y: x+y, [[1,2,3],[4,5,6], [7]])</pre>
+<p>Or quicker and neater using the operator library:</p>
+<pre>import operator
+reduce(operator.add, [[1,2,3],[4,5,6],[7]])</pre>
+<p>If the dimensions of the nested lists are regular, you can use numpy.ravel:</p>
+<pre>import numpy
+numpy.array([[0,1],[2,3],[4,5],[6,7]]).ravel()</pre>

@@ -1,0 +1,26 @@
+---
+layout: post
+title: Django with WSGI on Webfaction
+date: 2012-02-04 17:11:54.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/django-with-wsgi-on-webfaction/"
+---
+<p>After working locally on a Django website I had been building, which included features from the admin site, I began trying to upload the work to Webfaction to get the site live. I followed Webfaction's <a title="Getting Started with Django" href="http://docs.webfaction.com/software/django/getting-started.html">video</a> which explains nearly all of the process. The tutorial they used took a checked-out version of pastebin which they installed. Following the process to the letter, I couldn't get my app (which closely resembled something you might have at the end of the Django tutorial) I still couldn't get the site to work, getting an error:</p>
+<p>ImportError at /<br />
+No module named bookings.models</p>
+<p>Webfaction's tutorial was very nearly complete. The one other thing I needed to do (as the error messages indicate) was to add the components of the app to my Python Path in the WSGI file you create in the videocast:</p>
+<pre><span style="color: #3d3d3d;">import os import sys from django.core.handlers.wsgi import WSGIHandler os.environ['DJANGO_SETTINGS_MODULE'] = 'digibookings.settings'</span>
+
+<strong>sys.path.append('/home/noelevans/webapps/digibookings') sys.path.append('/home/noelevans/webapps/digibookings/digibookings') sys.path.append('/home/noelevans/webapps/digibookings/digibookings/bookings') </strong>
+<span style="color: #3d3d3d;">application = WSGIHandler()</span></pre>
+<p>Note the application I installed using the web interface of Webfaction is digibookings - the same as the Django project I created. Within that, I had a single app "bookings" which contained a models.py, etc.</p>

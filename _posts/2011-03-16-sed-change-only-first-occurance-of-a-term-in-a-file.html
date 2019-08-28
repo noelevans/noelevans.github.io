@@ -1,0 +1,21 @@
+---
+layout: post
+title: 'sed: change only first occurance of a term in a file'
+date: 2011-03-16 22:06:17.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/sed-change-only-first-occurance-of-a-term-in-a-file/"
+---
+<p>So in the example here, we look for the first line beginning with ALERT and puts 2 return chars after the line</p>
+<p>sed -r '0,/(^ALERT.*)/s//\1\n\n/'</p>
+<div><span style="line-height: 24px; font-size: 16px;"><br />
+</span></div>

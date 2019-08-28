@@ -1,0 +1,26 @@
+---
+layout: post
+title: Installing the Io language
+date: 2012-12-30 16:46:30.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- programming
+- seven languages in seven weeks
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/installing-the-io-language/"
+---
+<p>You're probably reading this after getting to the Io chapter in Seven languages in seven weeks. If you're installing on Ubuntu these commands worked for me: (You might also need to apt-get install cmake and/or git)</p>
+<pre>git clone https://github.com/stevedekorte/io.git
+cd io
+mkdir build &amp;&amp; cd build
+cmake ..
+make
+sudo make install</pre>
+<p>You can now run "io" from a new shell.</p>

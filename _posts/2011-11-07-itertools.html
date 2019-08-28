@@ -1,0 +1,112 @@
+---
+layout: post
+title: itertools
+date: 2011-11-07 23:02:03.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/itertools/"
+---
+<p>Some quick reference notes made on the itertools library</p>
+<pre>import itertools
+
+### chain ###
+Takes any number of iterables, back-to-backs them so you can iterate through all if the iterators in a single loop
+&gt;&gt;&gt; [ i for i in itertools.chain( [1, 2, 3], [4, 5, 6], [7, 8, 9] ) ]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+### combinations ###
+Think of nCr and nPr. In the example below, it returns unique pairs (hence the second arg, 2) for the set of values in the first arg - the list
+&gt;&gt;&gt; [ i for i in itertools.combinations( [1, 2, 3, 4], 2) ]
+[(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+
+### cycle ###
+For the iterable passed as an argument, cycle through each element, wrapping back to the start at the end
+it = itertools.cycle([1, 2, 3])
+it.next() -&gt; 1, 2, 3, 1, ...
+
+### dropwhile ###
+Iterate through a sequence until the lambda test (predicate) is True. Return all of the seq as soon as the test is satisfied
+&gt;&gt;&gt; [ i for i in itertools.dropwhile( lambda x: x &lt; 3, [1, 2, 3, 4, 5, 1] ) ]
+[3, 4, 5, 1]
+
+### groupby ###
+Bundles the elements of the first arg into iterators for each unique element (can also define a grouping fn)
+&gt;&gt;&gt; [ i for i in itertools.groupby([1, 2, 3, 2]) ]
+[(1, &lt;itertools._grouper&gt;), (2, &lt;itertools._grouper&gt;), (3, &lt;itertools._grouper&gt;)] # 2's grouper has more data
+
+### ifilter ###
+Just like filter. You pass either a lambda or None as the predicate
+&gt;&gt;&gt; [ i for i in itertools.ifilter(None, [1, 0, 7, 8]) ]
+[1, 7, 8]
+
+### ifilterfalse ###
+Opposite of ifilter. Would return [0] for the example of ifilter
+
+### imap ###
+Same as map except you can also use it to zip elements together, pushing them in to the same lambda:
+&gt;&gt;&gt; [ i for i in itertools.imap(lambda x, y: '%s%s' % (x, y), [1, 2, 3], [4, 5, 1]) ]
+['14', '25', '31']
+
+### islice ###
+Like slicing for lists, this iterates over a sequence, returning every 2nd elem from 1st index until 1000th elem
+&gt;&gt;&gt; [ i for i in itertools.islice(['MSFT', 26, 'AAPL', 660, 'FBOOK', 0.01], 1, 1000, 2) ]
+[26, 660, 0.01]
+
+### izip ###
+Just like zip, returns nth elem of multiple sequences together
+&gt;&gt;&gt; [ i for i in itertools.izip( ['a', 'b', 'c'], ['m', 'n'] ) ]
+[('a', 'm'), ('b', 'n')] # notice 'c' is missing
+
+### izip_longest ###
+Just like izip but fills in blanks with Nones
+&gt;&gt;&gt; [ i for i in itertools.izip_longest( ['a', 'b', 'c'], ['m', 'n'] ) ]
+[('a', 'm'), ('b', 'n'), ('c', None)]
+
+### permutations ###
+See combinations - nPr rather than nCr
+&gt;&gt;&gt; [ i for i in itertools.permutations( [1, 2, 3, 4], 2) ]
+[(1, 2), (1, 3), (1, 4), (2, 1), (2, 3), (2, 4), (3, 1), (3, 2), (3, 4), (4, 1), (4, 2), (4, 3)]
+
+### product ###
+Cartesian product of all elements from each of the sequences passed as args
+- join everything from table A to table B and repeat over for table C ...
+&gt;&gt;&gt; [ i for i in itertools.product(['a', 'b'], ['c', 'd']) ]
+[('a', 'c'), ('a', 'd'), ('b', 'c'), ('b', 'd')]
+
+### repeat ###
+Repeats to first arg 4 times in example below. Will repeat endlessly without the 2nd arg
+&gt;&gt;&gt; [ i for i in itertools.repeat(10, 4) ]
+[10, 10, 10, 10]
+
+### starmap ###
+Like a map inside a map function. (I think this fn is of less use)
+
+&gt;&gt;&gt; [ i for i in itertools.starmap( pow, [ [2, 3], [7, 3] ] ) ]
+[8, 343]
+
+### takewhile ###
+Opposite of dropwhile - failing as soon as the predicate returns True
+&gt;&gt;&gt; [ i for i in itertools.takewhile( lambda x: x &lt; 3, [1, 2, 3, 4, 5, 1] ) ]
+[1, 2]
+
+### tee ###
+For a given sequence (1, 2), returns 3 copies of the same sequence to iterate over
+&gt;&gt;&gt; i, j, k = itertools.tee([1, 2], 3)
+&gt;&gt;&gt; i.next()
+1
+&gt;&gt;&gt; i.next()
+2
+&gt;&gt;&gt; i.next()
+StopIteration
+&gt;&gt;&gt; j.next()
+1
+&gt;&gt;&gt; j.next()</pre>

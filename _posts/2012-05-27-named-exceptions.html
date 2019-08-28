@@ -1,0 +1,24 @@
+---
+layout: post
+title: Named exceptions
+date: 2012-05-27 10:37:53.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/named-exceptions/"
+---
+<p>Need more on the error being thrown? You need to name the exception like so:</p>
+<pre>try:
+    raise Exception('MONSTER!')
+except Exception as ex:
+    print 'The error is a %s' % ex
+
+&gt;&gt;&gt; The error is a MONSTER!</pre>

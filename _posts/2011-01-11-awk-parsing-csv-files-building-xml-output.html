@@ -1,0 +1,20 @@
+---
+layout: post
+title: 'Awk: parsing CSV files, building XML output'
+date: 2011-01-11 22:00:14.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+  _wp_old_slug: ''
+author: Noel
+permalink: "/awk-parsing-csv-files-building-xml-output/"
+---
+<p>This awk command takes an input CSV file (delimited by a comma set with the -F flag) and for each row, prints an XML tage &lt;elementName  id="?"  name="????"/&gt;</p>
+<pre>awk -F , '{print "&lt;elementName  id=\""$1"\"  name=\""$2"\"/&gt;"}'  input.csv</pre>

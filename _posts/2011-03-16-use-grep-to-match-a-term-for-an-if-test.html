@@ -1,0 +1,23 @@
+---
+layout: post
+title: Use grep to match a term for an if test
+date: 2011-03-16 22:15:47.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/use-grep-to-match-a-term-for-an-if-test/"
+---
+<p>if echo -e "Hello\nWorld" | grep -q "ell" ; then<br />
+echo "Hello was matched"<br />
+else<br />
+echo "World was matched"<br />
+fi</p>
+<p>&gt; Hello was matched</p>

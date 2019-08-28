@@ -1,0 +1,28 @@
+---
+layout: post
+title: defaultdict explained
+date: 2015-12-11 22:39:43.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '1'
+  _wpas_done_all: '1'
+author: Noel
+permalink: "/defaultdict-explained/"
+---
+<p>If we wanted to count occurrences in a list (without collections.Counter) we could write this:</p>
+<pre class="">    res = {}
+    for x in xs:
+        res[x] = res.get(x, 0) + 1</pre>
+<p>Alternatively, we could use a defaultdict. The constructor of a defaultdict takes one arg – a function – what to do when a new key is added to the dict. So instead, you could write:</p>
+<pre class="">    from collections import defaultdict
+    res = defaultdict(lambda: 0)
+    for x in xs:
+        d[x] += 1</pre>
+<p>But the final addition that makes it briefer but perhaps more confusing on first approach is that defaultdict understands int to mean the same as lambda: 0 and has the same effect. I.e.</p>
+<pre class="">    res = defaultdict(int)</pre>

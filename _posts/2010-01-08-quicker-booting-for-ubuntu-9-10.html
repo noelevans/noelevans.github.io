@@ -1,0 +1,24 @@
+---
+layout: post
+title: Quicker booting for Ubuntu 9.10
+date: 2010-01-08 10:46:31.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- ubuntu
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/quicker-booting-for-ubuntu-9-10/"
+---
+<p>If you're using Karmic Koala (or Lucid Lynx), the boot loader, Grub will seem a little bit different from previous Ubuntu releases. Previously to make changes like the timeout before loading the default OS, you edited /boot/grub/menu.lst</p>
+<p>Grub is now configured by editing (as a root user)</p>
+<pre>1.)  &gt;  <strong>sudo nano /etc/default/grub</strong></pre>
+<p>Make changes to the GRUB_TIMEOUT or whatever else you needed to change. The config now needs to be made live. Do this by calling</p>
+<pre>2.) &gt;   <strong>sudo update-grub</strong></pre>
+<p>The changes are now written to an auto-generated file /boot/grub/grub.cfg but this file shouldn't be edited by hand.</p>
+<p>For more info, see the Ubuntu's <a title="Grub2 Ubuntu docs" href="https://wiki.ubuntu.com/Grub2">official docs</a> on the subject.</p>

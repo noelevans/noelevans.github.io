@@ -1,0 +1,36 @@
+---
+layout: post
+title: Partial funcs
+date: 2012-05-27 12:28:43.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/partial-funcs/"
+---
+<p>When you need to pass a function name as a parameter to something else but the param also needs input, you can "hide" calls using partial funcs.</p>
+<pre>from functools import partial
+
+int( '1010', base=2 )
+&gt; 10
+int( '1011', base=2 )
+&gt; 11
+int( 'FF', base=16 )
+&gt; 255
+
+frombinary = partial( int, base=2 )
+fromhex    = partial( int, base=16 )
+
+frombinary( '1010101' )
+&gt; 85
+fromhex('FFFFFF')
+&gt; 16777215
+fromhex('cafebabe')
+&gt; 3405691582L</pre>

@@ -1,0 +1,20 @@
+---
+layout: post
+title: Vanilla Python reg ex test
+date: 2012-03-11 22:59:55.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/vanilla-python-reg-ex-test/"
+---
+<p>A quick reference on testing a regular expression. If the regex is matched, the call returns a match object (an empty one in this case since there are groups to select) - rather than None.</p>
+<pre>import re
+re.match( re.compile( '[Hh]ello.*[Ww]orld' ), 'Hello, World!' )</pre>

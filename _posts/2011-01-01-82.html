@@ -1,0 +1,28 @@
+---
+layout: post
+title: Canonical args and kwargs example
+date: 2011-01-01 23:37:56.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+  _wp_old_slug: ''
+author: Noel
+permalink: "/82/"
+---
+<p>This demonstrates how to use Python args and kwargs. Hopefully helps a little bit when you get a "expected X arguments but got Y"</p>
+<pre>def print_things(tea, *args, **kwargs) :
+ print 'tea = ' + tea
+ for a in args:
+ print 'note: ' + a
+ for key in kwargs:
+ print 'kwa: ' + key + ': ' + kwargs[key]
+
+print_things('Tetleys', 'la-la-la', 'ray-ray-ray', 'me-me-me',
+             nice='honey', horrible='cabbage')</pre>

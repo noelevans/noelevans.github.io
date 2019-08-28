@@ -1,0 +1,21 @@
+---
+layout: post
+title: Backing up Wordpress (or other MySQL DBs)
+date: 2012-03-18 12:41:45.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/backing-up-wordpress-or-other-mysql-dbs/"
+---
+<p>These commands will backup and restore backups of a complete database to the current directory you're in. The -p option will prompt you for the DB's password (which you can get from wp-config.php)</p>
+<pre>mysqldump your_db_name -u your_db_username -p &gt; backup_filename_to_create.sql
+mysql your_db_name -h localhost -u your_db_username -p &lt; backup_filename_to_restore.sql</pre>
+<p>Often the values for "your_db_name" and "your_db_username" are the same values. Let me know if you have any questions.</p>

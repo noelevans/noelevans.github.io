@@ -1,0 +1,30 @@
+---
+layout: post
+title: Ignore commented out settings in config file
+date: 2010-11-06 11:15:08.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+  _wp_old_slug: ''
+author: Noel
+permalink: "/ignore-commented-out-settings-in-config-file/"
+---
+<pre id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow: hidden;">SAPPHIRE_VERSION_SETTING="^[[:space:]]*export[[:space:]]+SAPPHIRE_CURRENT_VERSION="</pre>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow: hidden;">
+<pre>SAPPHIRE_VERSION_SETTING_VALUE=`egrep "${SAPPHIRE_VERSION_SETTING}" ~/${QUERY_STRING}/config/sapphire_env.sh | sed s/"${SAPPHIRE_VERSION_SETTING}"//`</pre>
+</div>
+<pre># Define the regex which will account for spaces at
+# the start of the line
+TOOL_VERSION_EXP="^[[:space:]]*export[[:space:]]+APP_VERSION=" 
+
+# Search for the regex, grabbing the value after the equals,
+# then stripping the name of the setting
+TOOL_VERSION_VALUE=`egrep "${TOOL_VERSION_EXP}" settings.config |
+  sed -r s/"${TOOL_VERSION_EXP}"//`</pre>

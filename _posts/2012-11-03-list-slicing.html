@@ -1,0 +1,30 @@
+---
+layout: post
+title: List slicing
+date: 2012-11-03 15:25:45.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/list-slicing/"
+---
+<p>For shorter lists:</p>
+<pre>&gt;&gt;&gt; alphanums = ['a', 1, 'b', 2, 'c', 3, 'd', 4]
+ &gt;&gt;&gt; alphas = alphanums[:-1:2]
+ &gt;&gt;&gt; nums   = alphanums[1::2]
+ &gt;&gt;&gt; alphas
+ ['a', 'b', 'c', 'd']
+ &gt;&gt;&gt; nums
+ [1, 2, 3, 4]</pre>
+<p>For longer sequences, use iterators:</p>
+<pre>import itertools
+ &gt;&gt;&gt; [ i for i in itertools.islice(['a', 1, 'b', 2, 'c', 3], 1, None, 2) ]
+ [1, 2, 3]</pre>
+<p>Where 1, None, 2 correspond to the start, end and steps to take.</p>

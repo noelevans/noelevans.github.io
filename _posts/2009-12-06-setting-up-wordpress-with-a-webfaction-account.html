@@ -1,0 +1,62 @@
+---
+layout: post
+title: Setting up WordPress with a WebFaction account
+date: 2009-12-06 23:31:58.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- webfaction
+- wordpress
+tags: []
+meta:
+  _edit_last: '1'
+  _oembed_624300f4d6ae9350bdb00e013d9fc4f3: "{{unknown}}"
+  _oembed_a77bab5e3b4b0142ef7ae11b02045fe2: "{{unknown}}"
+  _oembed_d7d3ec38f0d0b75a3d4b11f72e6c42ee: "{{unknown}}"
+  _oembed_3479eb560f3d81ff0d65b9ae77423b6b: "{{unknown}}"
+author: Noel
+permalink: "/setting-up-wordpress-with-a-webfaction-account/"
+---
+<p>I read WordPress' instructions on setting up their blog. WebFaction are a lovely bunch of hosters but it does take a <a title="Famous 5 minute install" href="http://codex.wordpress.org/Installing_WordPress#Famous_5-Minute_Install" target="_self">few minutes more</a> than WP claim to get your blog up and running. These are very basic instructions but I couldn't imagine some friends getting through the whole process without a hitch...</p>
+<p>Log in to the Webfaction control panel at https://panel.webfaction.com</p>
+<p>Go to the domain page (https://panel.webfaction.com/domain/create). This part is telling WebFaction that you plan on using their hosting for a domain name you've just bought</p>
+<ul>
+<li>Under name, enter the domain eg. "example.com"</li>
+<li>In the bottom right of the page, click on the page icon with the " + " marker</li>
+<li>In the subdomain text box, enter "www"</li>
+<li>Click Create</li>
+</ul>
+<p>Again on the control panel's menu, go to "Domains / websites" and then choose Applications.</p>
+<ul>
+<li>In the bottom right hand, click the Add New icon</li>
+<li>In the name box enter a name for the application (Something like "my_blog")</li>
+<li>Under App type, find the WordPress version not marked "insecure"</li>
+<li>Click create</li>
+<li>The Wordpress application is now installed including a MySQL database to hold your posts.</li>
+<li>The confirmation page you now see has the password to the database by the Extra info label. Make a note of it somewhere</li>
+</ul>
+<p>You now have a Wordpress application and a domain for it to use. These two parts need to be linked together under "Domains / websites" &gt; Websites</p>
+<ul>
+<li>Click to add a new Site, adding the following information:</li>
+<li>Name: a unique name -  (eg. my_example)</li>
+<li>Subdomains: add all of the URLs from the list that will point to the new website</li>
+<li>Under Site apps, add a new entry and choose the name of the application you made earlier (setting the URL path to be "/" if the website will only be a blog)</li>
+<li>Click Create</li>
+</ul>
+<p>Point your web browser now to http://example.com/wp-admin/install.php. You should get a page from WordPress but go to the root URL (http://example.com) and there's an error message:<br />
+"Not Found. The requested URL /defaultsite was not found on this server."</p>
+<p>To correct this problem, SSH on to your WebFaction account and log in to the MySQL database that was created by the installer (For this command, you'll need the database name which is listed under Databases &gt; "List databases":<br />
+mysql -u _your_db_username_  -p</p>
+<p>You'll be prompted for the password which you were given after doing the Application part of the setup.</p>
+<p>Once you've logged in, use the "show databases;" command to see all of the databases. There should be one named like your application. You need to switch to this DB and then view the tables in this database.<br />
+use your_db_username;<br />
+show tables;</p>
+<p>Something in these tables has some bad data from the initialisation. We're going to delete all of the tables and let the official WordPress setup recreate them properly. Delete each of the tables shown from the previous call using "drop table name_of_table". There are 10 in my blog, each beginning with "wp_". Get rid of them all.</p>
+<p>Do "show tables;" again and there should be nothing.</p>
+<p>No go back to<br />
+http://example.com/wp-admin/install.php</p>
+<p>And you should be ready to go.</p>
+<p>Choose a name, make a post and example.com should be there with your first post.</p>

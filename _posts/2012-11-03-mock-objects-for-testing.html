@@ -1,0 +1,26 @@
+---
+layout: post
+title: Mock objects... for testing
+date: 2012-11-03 15:29:16.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/mock-objects-for-testing/"
+---
+<p>Mock attributes and functions for objects you need quickly in a test</p>
+<pre>&gt;&gt;&gt; def do_print(x):
+...     print x
+
+&gt;&gt;&gt; apple = type("", (), {'pips':7, 'bite':lambda s:do_print('Munch!')})()
+&gt;&gt;&gt; apple.pips
+7
+&gt;&gt;&gt; apple.bite()
+Munch!</pre>

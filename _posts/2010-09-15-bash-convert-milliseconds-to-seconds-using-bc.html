@@ -1,0 +1,19 @@
+---
+layout: post
+title: 'Bash: convert milliseconds to seconds using bc'
+date: 2010-09-15 11:08:45.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/bash-convert-milliseconds-to-seconds-using-bc/"
+---
+<p>This is really just a lesson in how to use bc for formatting. This command takes a variable $time_millis and divides by 1000 to get time time in seconds, formatting to 2DP</p>
+<p>time_secs=`echo "scale=2;${time_millis}/1000" | bc`</p>

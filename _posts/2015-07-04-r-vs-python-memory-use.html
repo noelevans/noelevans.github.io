@@ -1,0 +1,24 @@
+---
+layout: post
+title: 'R vs Python: memory use'
+date: 2015-07-04 19:08:27.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+- R
+tags: []
+meta:
+  _edit_last: '1'
+  _wpas_done_all: '1'
+author: Noel
+permalink: "/r-vs-python-memory-use/"
+---
+<p>I've recently been trying to build some machine learning skills by working on prediction challenges from Kaggle. Getting some R skills was also a goal. I was trying to work on the <a href="https://www.kaggle.com/c/sf-crime">San Francisco Crime</a> project and planned to start by growing a Random Forest for the full training set dropping some of the predictors (n=878050, p=5).</p>
+<p>After debugging the code with a small sample of the data, I ran with the full dataset and my laptop ran out of memory. I switched to the Google Cloud Compute instance I'm trialling: 2 CPUs, 13GB memory + 7GB of swap. Still not enough memory to build a <strong>single-tree</strong> Random Forest in R. Next I took the training data and tried to build Random Forests for one of the 10 Districts. Again I couldn't build the forest due to insufficient memory on the big Google instance I had.</p>
+<p>Thinking this was getting ridiculous, I ported the code to Python to use Scikit-Learn. I ran the same single-tree random forest; one forest for each district in memory at the same time and the model built fine on my low-spec laptop sharing memory with Chromium, OpenOffice, etc. I intentionally avoided optimising the Python code so it had no head-start on the R code. These are the two versions of the random forest:</p>
+<p><a href="https://github.com/noelevans/playground/blob/f8e1a2ca7c8df8da6f2e422a0db5796a4ceaf791/kaggle/sf-crime-classification/analyse.R">analyse.R</a><br />
+<a href="https://github.com/noelevans/playground/blob/70914285a9ee452ba63c9fede2ebb98d8cf0d751/kaggle/sf-crime-classification/analysis.py">analysis.py</a></p>

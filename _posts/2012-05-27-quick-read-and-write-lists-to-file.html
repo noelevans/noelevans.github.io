@@ -1,0 +1,24 @@
+---
+layout: post
+title: Quick read and write lists to file
+date: 2012-05-27 11:14:46.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/quick-read-and-write-lists-to-file/"
+---
+<p>Reading from a file:</p>
+<pre>with open('input.txt') as f:
+    lines = f.read().splitlines()</pre>
+<p>Writing back out:</p>
+<pre>with open('output.txt', 'w') as f:
+    for el in elems:
+        f.write(el + '\n')</pre>

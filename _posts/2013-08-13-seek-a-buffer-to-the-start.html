@@ -1,0 +1,33 @@
+---
+layout: post
+title: Seek a buffer to the start
+date: 2013-08-13 22:52:56.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/seek-a-buffer-to-the-start/"
+---
+<p>I've been caught out a few times by forgetting this: when you create a StringIO buffer, writing some lines to it, you need to reset the pointer back to the beginning of the buffer. The all important line is in bold. Without this the file will be uploaded with no contents.</p>
+<pre class="">import cStringIO
+from ftplib import FTP
+
+def main():
+    buf = cStringIO.StringIO()
+    buf.write('Hello, \n')
+    buf.write('World!\n')
+<strong>    </strong>buf.seek(0)
+
+    try:
+        conn = FTP('ftp.myserver.com')
+        conn.login() 
+        print conn.storlines('STOR /tmp/greetings.txt', buf)
+    finally:
+        conn.close()</pre>

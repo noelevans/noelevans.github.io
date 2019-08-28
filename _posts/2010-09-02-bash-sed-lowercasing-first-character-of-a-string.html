@@ -1,0 +1,20 @@
+---
+layout: post
+title: 'Bash / sed: lowercasing first character of a string'
+date: 2010-09-02 11:00:27.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/bash-sed-lowercasing-first-character-of-a-string/"
+---
+<p>Say you want to convert a string in bash from "QuakerOats" to "quakerOats", use sed as follows:</p>
+<p>echo "QuakerOats" | sed 's/\(.\)\.*/\L\1/'</p>
+<p>Done.</p>

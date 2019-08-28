@@ -1,0 +1,25 @@
+---
+layout: post
+title: Branching and merging in Git
+date: 2015-06-03 07:04:54.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- git
+tags: []
+meta:
+  _edit_last: '1'
+  _wpas_done_all: '1'
+author: Noel
+permalink: "/branching-and-merging-in-git/"
+---
+<p>Workflow for branching and merging:</p>
+<pre class="">git checkout -b my-task # create a new branch named "my-task"
+# make changes
+git commit -a
+git checkout master # return to master branch
+git merge my-task # merge my-task in to master branch
+git pull . my-task # merge changesets from my-task</pre>

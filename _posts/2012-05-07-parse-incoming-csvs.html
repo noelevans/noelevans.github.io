@@ -1,0 +1,24 @@
+---
+layout: post
+title: Parse incoming CSVs
+date: 2012-05-07 13:32:40.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+author: Noel
+permalink: "/parse-incoming-csvs/"
+---
+<p>As close as you can get to a string input:</p>
+<pre>import csv
+for row in csv.reader(['one,two,three']):
+    print row</pre>
+<p>And from a file:</p>
+<pre>for row in csv.reader(open('C:/test.csv')):
+    print row</pre>

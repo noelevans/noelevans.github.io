@@ -1,0 +1,22 @@
+---
+layout: post
+title: Show simple traceback to point in code
+date: 2012-10-11 21:07:53.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- python
+tags: []
+meta:
+  _edit_last: '1'
+  _wp_old_slug: show-simple-traceback-at-point-in-code
+author: Noel
+permalink: "/show-simple-traceback-to-point-in-code/"
+---
+<div lang="EN-GB">
+<pre>import inspect
+print "Trace to here", inspect.stack()[2][3]</pre>
+</div>

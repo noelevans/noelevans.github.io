@@ -1,0 +1,22 @@
+---
+layout: post
+title: Use xargs to copy files
+date: 2010-11-06 11:05:19.000000000 +00:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories:
+- bash
+tags: []
+meta:
+  _edit_last: '1'
+  _wp_old_slug: ''
+author: Noel
+permalink: "/use-xargs-to-copy-files/"
+---
+<p>You want to perform a copy, move or some other operation where the argument you pass in using xargs isn't at the last argument for the following command. Do as follows:</p>
+<pre>ls  -tr1  |  tail  -5  |  xargs  -i  cp  '{}'  dest/folder/</pre>
+<p>You might also need to add the option -n1 if the output from the ls command (or whatever else it may be) is larger than your shell's buffer. i.e.</p>
+<pre>...  xargs  -n1  -i  cp  '{}' dest/folder</pre>

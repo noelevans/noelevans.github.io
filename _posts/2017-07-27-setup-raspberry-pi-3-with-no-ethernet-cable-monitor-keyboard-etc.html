@@ -1,0 +1,43 @@
+---
+layout: post
+title: Setup Raspberry PI 3 with no (ethernet) cable, monitor, keyboard, etc.
+date: 2017-07-27 22:24:22.000000000 +01:00
+type: post
+parent_id: '0'
+published: true
+password: ''
+status: publish
+categories: []
+tags: []
+meta:
+  _edit_last: '1'
+  _wpas_done_all: '1'
+author: Noel
+permalink: "/setup-raspberry-pi-3-with-no-ethernet-cable-monitor-keyboard-etc/"
+---
+<p>A complete guide to setting up a Raspberry Pi 3 (RPi) to connect wirelessly. Everything is setup from your laptop, writing to a micro SD card before plugging the card in to the RPi. I'm doing this on an Ubuntu computer. I imagine it is very similar from a Mac.</p>
+<ol>
+<li>Download and unzip the <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a> operating system (OS). You will now have an img file ready to write somewhere.</li>
+<li>Download, install and run <a href="https://etcher.io/">Etcher</a> to write the raw operating system to the SD card. This is by far the easiest / safest way to write the OS to the card. (Note I have no liability for mistakes that may occur with this. Follow the instructions on Etcher's website)</li>
+<li>Open a command window and enter:
+<pre class="">sudo touch /media/xyz/boot/ssh</pre>
+<p>where xyz is the path to the SD card and main_drive_abc will be some long text. One of these two is not necessary but I don't care which. This writes an empty file to these folders. They enable ssh so the RPi can be connected to using the SSH protocol from your laptop.</li>
+<li>Now to use WiFi you'll need to give the RPi your username and password. This command will open an editor on the file that stores this information:
+<pre class="">sudo nano /media/xyz/main_drive_abc/etc/wpa_supplicant/wpa_supplicant.conf</pre>
+<p>At the bottom of the file add this:</p>
+<pre class="">network={
+    ssid="wifi_name"
+    psk="wifi_password"
+}</pre>
+<p>Now press Ctrl+X to exit. Press "y" to save it as the correct filename.</li>
+<li>Put the SD card in the RPi. Plug in the USB power cable. You are ready to connect from your laptop.</li>
+<li>Find the RPi on your network using the command<br />
+<span class="crayon-e">sudo </span><span class="crayon-v">arp</span><span class="crayon-o">-</span><span class="crayon-v">scan</span> <span class="crayon-o">--</span><span class="crayon-v">localnet</span><br />
+Hopefully there will be an obvious choice. If not, try the following instruction changing the final number in the IP address below with each choice you see in arp-scan's output</li>
+<li>Connect to the RPi with the command (changing 192.168.0.18 for whatever number your RPi is allocated on your network)
+<pre class="">ssh pi@192.168.0.18</pre>
+<p>The username you are using is pi. The password when prompted is "raspberry"</li>
+<li>It is a huge security whole leaving the password unchanged. Run
+<pre class="">sudo raspi-config</pre>
+<p>This gives you an interactive menu. Change the password, update the system. You now have an operational Raspberry Pi to hack.</li>
+</ol>
