@@ -31,7 +31,7 @@ permalink: "/how-to-price-a-swap/"
 <p class="">Where c (for coupon) is the notional amount</p>
 <p class="">So the value of the fixed leg is a straight forward calculation. The value of the floating leg is the same but uses rates taken from the swap curve which we need to build.</p>
 <h2 class="">Building a swap curve</h2>
-<p class="">When valuing the floating leg on the trade date, we need to take rates from the swap curve.<a href="http://www.noelevans.co.uk/wp-content/uploads/2015/08/Drawing-2.png"><img class=" size-medium wp-image-492 alignright" src="{{ site.baseurl }}/assets/Drawing-2-300x157.png" alt="Swap curve" width="300" height="157" /></a><br />
+<p class="">When valuing the floating leg on the trade date, we need to take rates from the swap curve.<a href="{{ site.baseurl }}/assets/Drawing-2.png"><img class=" size-medium wp-image-492 alignright" src="{{ site.baseurl }}/assets/Drawing-2-300x157.png" alt="Swap curve" width="300" height="157" /></a><br />
 This is built from a variety of products taken from exchanges where the products are of similar credit worthiness.</p>
 <p class="">The rates that make the curve are "n-year zero rates", often called zero rates. A zero rate is the rate an investment (like an IR bond) would pay when all of the interest was paid at maturity with the repayment of a principal amount. So we can see a 5 year investment should return at a rate of about 4.2% from our curve above. Where do these rates to make the curve come from:</p>
 <h4 class="">Short-end</h4>
